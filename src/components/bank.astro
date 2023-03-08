@@ -15,18 +15,21 @@
               norek: 693901009058534
             }
           ] }"
+          class="flex flex-col"
     >
       <template x-for="bank in bankNum">
-        <div class="bank-number">
+        <div class="bank-number flex-inline gap-5">
           <h4 x-text="bank.nama"></h4>
           <div>
             <p x-text="bank.norek"></p>
           </div>
-          <button
-            class="copy-btn"
+        <div class="ehem">
+
+          <a
+            class="code "
             x-on:click="navigator.clipboard.writeText(bank.norek).then(() => { alert(`Norek ${bank.nama} berhasil disalin`) }).catch(() => { alert('Norek gagal disalin') })"
-            >Copy</button
-          >
+            >Copy</a
+          ></div>
         </div>
       </template>
     </div>
@@ -34,25 +37,77 @@
   </div>
   <div class="flex-col">
     <h2>Konfirmasi</h2>
-    <div x-data="{ nama: '', norek:'', option: 'option1' }">
+    <div class="flex flex-col" x-data="{ nama: '', norek:'', option: 'option1' }">
         <input type="text" x-model="nama" placeholder="Masukkan Nama">
         <input type="number" x-model="norek" placeholder="Masukkan Nomor Rekening anda">
     
         <label>
           <input type="radio" x-model="option" value="BSI">
           BSI
-        </label>
         
-        <label>
           <input type="radio" x-model="option" value="BRI">
          BRI
-        </label>
-        <a 
-        <a target="blank" x-bind:href="`https://wa.me/62895344232330?text=Assalamualaikum, Saya ${nama} telah mentransfer donasi melalui bank ${option}. Berikut nomor rekening milik saya ${norek}`"> KONFIRMASI </a>
-
+        </label> 
+        <a target="blank" class=" tes" :href="`https://wa.me/62895344232330?text=Assalamualaikum, Saya **${nama}** telah mentransfer donasi melalui bank **${option}**. Berikut nomor rekening milik saya **${norek}**`"> KONFIRMASI </a>
       </div>
   </div>
 </section>
+
+<style>.ehem .code{
+  font-size: 0.875em;
+  font-weight: bold;
+  background: rgba(var(--accent), 12%);
+  color: rgb(var(--accent));
+  border-radius: 4px;
+  padding: 0.3em 0.45em;
+  cursor:pointer
+}
+
+.tes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #ff0000;
+  font-size: 18px;
+  border-radius: 5px;
+  width: 200px;
+  height: 40px;
+  border: 1px solid black;
+  position: relative;
+  transition: 0.3s;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.tes::before {
+  content: "🌟";
+  display: block;
+  font-size: 12px;
+  width: 60px;
+  text-align: center;
+  background-color:rgba(var(--accent), 82%);
+  padding: 7px 0 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-34%, -4px) rotate(-35deg);
+  transition: .3s;
+}
+
+.tes:hover {
+  color: #fff;
+  background-color:rgb(var(--accent));
+}
+
+.tes:hover::before {
+  content: "👌";
+  transform: translate(-14%,0) rotate(-35deg);
+  font-size: 22px;
+  z-index: 5;
+}
+</style>
 
   
   

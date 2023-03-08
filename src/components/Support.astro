@@ -5,29 +5,17 @@ const Pendukung: { nama: string; logo: string }[] = [
     logo: "src/public/01.webp",
   },
   {
-    nama: "AlQolam web",
+    nama: "Insani",
     logo: "src/public/07.webp",
   },
   {
-    nama: "Murun",
+    nama: "IAAM",
     logo: "src/public/02.webp",
   },
   {
-    nama: "tesaw",
+    nama: "KHIDMAH",
     logo: "src/public/03.webp",
-  },
-  {
-    nama: "pokoke",
-    logo: "src/public/04.webp",
-  },
-  {
-    nama: "anoo",
-    logo: "src/public/05.webp",
-  },
-  {
-    nama: "Assqwe",
-    logo: "src/public/06.webp",
-  },
+  }
 ];
 
 const supported = Object.keys(Pendukung);
@@ -37,12 +25,13 @@ const dukungan = supported.map((key) => supported[key]);
 <section>
   <h2>Powered By</h2>
   <div>
-    <div class="flex">
+    <div class="flex gap-6">
       {
         Pendukung.map(({ nama, logo }) => (
-          <div class="flex">
-            <h2>{nama}</h2>
+          <div class="flex ">
             <img src={logo} />
+            <h2>{nama}</h2>
+            
           </div>
         ))
       }
