@@ -1,71 +1,83 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Resuma from '../components/Ringkasan.astro';
-import Bank from '../components/bank.astro';
-import Support from '../components/Support.astro';
+import Layout from "../layouts/Layout.astro";
+import Resuma from "../components/Ringkasan.astro";
+import Bank from "../components/bank.astro";
+import Support from "../components/Support.astro";
 
- const now = new Date();
- const options = { weekday: 'long' };
-const hariIni = now.toLocaleDateString('id-ID', options)+" "+now.toLocaleDateString();
-
-
+const now = new Date();
+const options: Intl.DateTimeFormatOptions = { weekday: "long" };
+const hariIni =
+  now.toLocaleDateString("id-ID", options) + " " + now.toLocaleDateString();
 ---
 
 <Layout title="BerSaMa-Berbagi Selama Ramadan.">
-	
-	<main>
-		<div class="mx-auto  w-fit font-800 text-13 md:text-18 text-center">
-		<h1>1000 <span class="text-gradient">Paket</span></h1>
-		<h2 class="text-2xl font-800 ">Takjil Untuk <span class="text-gradient">Muslim</span></h2>
-		</div>
-		<div class="instructions">
-		<h3 class="mx-auto text-6 w-fit">
-			Laporan <a href="#" class="code">{hariIni}</a> .<br />
-		</h3></div>
-		<Resuma />
-		<h3 class=" font-lobster maafYak">Maaf masuk prod, kalau mau gabung ke <a href="https://github.com/herbras/Monitor" class="code" style="background: black;
-			color: white;">Github</a> ya</h3>
-		<Bank />
-		<Support />
-		<p class="text-2">By <a class="font-600 text-gradient" href="https://sarbeh.com">Ibrahim Nurul Huda</a></p>
-	</main>
+  <main>
+    <div class="mx-auto w-fit font-800 text-13 md:text-18 text-center">
+      <h1>1000 <span class="text-gradient">Paket</span></h1>
+      <h2 class="text-2xl font-800">
+        Takjil Untuk <span class="text-gradient">Muslim</span>
+      </h2>
+    </div>
+    <div class="instructions">
+      <h3 class="mx-auto text-6 w-fit">
+        Laporan <a href="#" class="code">{hariIni}</a> .<br />
+      </h3>
+    </div>
+    <Resuma />
+    <h3 class="font-lobster maafYak">
+      Maaf masuk prod, kalau mau gabung ke <a
+        href="https://github.com/herbras/Monitor"
+        class="code"
+        style="background: black;
+			color: white;">Github</a
+      > ya
+    </h3>
+    <Bank />
+    <Support />
+    <p class="text-2">
+      By <a class="font-600 text-gradient" href="https://sarbeh.com"
+        >Ibrahim Nurul Huda</a
+      >
+    </p>
+  </main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 2.5rem;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions .code,  .maafYak .code{
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+  main {
+    margin: auto;
+    padding: 2.5rem;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .instructions {
+    line-height: 1.6;
+    margin: 1rem 0;
+    border: 1px solid rgba(var(--accent), 25%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
+  }
+  .instructions .code,
+  .maafYak .code {
+    font-size: 0.875em;
+    font-weight: bold;
+    background: rgba(var(--accent), 12%);
+    color: rgb(var(--accent));
+    border-radius: 4px;
+    padding: 0.3em 0.45em;
+  }
+  .instructions strong {
+    color: rgb(var(--accent));
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
 </style>
