@@ -10,4 +10,4 @@
 
 ## Rencananya dibuat gini
 
-![alt text](/Donasi/public/image0.png)
+![alt text](/public/image0.png)
