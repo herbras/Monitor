@@ -1,127 +1,150 @@
 ---
-let IDRupiah = new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
+let IDRupiah = new Intl.NumberFormat("id-ID", {
+  style: "currency",
+  currency: "IDR",
 });
 const Insta = import.meta.env.SHEET_API;
-const response = await fetch(Insta)
+const response = await fetch(Insta);
 const data = await response.json();
 const [kebutuhan, totalDonasi, kekurangan, terkumpul] = data;
 
 const mapped = data.map(([label, value]) => ({ label, value }));
-
 
 const numKebutuhan = IDRupiah.format(kebutuhan[1]);
 const numtotalDonasi = IDRupiah.format(totalDonasi[1]);
 const numkekurangan = IDRupiah.format(kekurangan[1]);
 const numterkumpul = (parseFloat(terkumpul[1]) * 100).toFixed(2);
 const warna = "red";
-console.log(numterkumpul)
-
+console.log(numterkumpul);
 ---
 
 <section id="Rangkuman" class="">
-    <div class="lgd ">
-        <div class="lrd h-xs md:h-xl shadow-dark">
-          <div id="donut" class="radial-progress m-auto border-4 text-8 md:text-12 font-700" style="--value:70; --thickness: 2rem;">{numterkumpul}%</div>
-
-        </div>
-        <div class="lrd break-words text-center w-full px-5" >
-            <h2 class="text-6 font-700 md:text-9 lg:text-12 m-auto w-8/12"><span class="text-7 md:text-12 lg:text-15 text-gradient font-bold">{numtotalDonasi}</span> Alhamdulillah telah terkumpul dari <span class="text-5 md:text-10 lg:text-13">{numKebutuhan}</span></h2>
-        </div>
+  <div class="lgd">
+    <div class="lrd h-xs md:h-xl shadow-dark">
+      <div
+        id="donut"
+        class="radial-progress m-auto border-4 text-8 md:text-12 font-700"
+        style="--value:70; --thickness: 2rem;"
+      >
+        {numterkumpul}%
+      </div>
     </div>
+    <div class="lrd break-words text-center w-full px-5 flex-col">
+      <div class="m-auto w-9/12">
+      <p class="text-7 md:text-12 lg:text-15 text-gradient font-bold"
+          >{numtotalDonasi}</p>
+      <p class="text-6 font-700 md:text-9 lg:text-12 ">
+         Alhamdulillah telah terkumpul dari 
+      </p>
+      <p
+          class="text-5 md:text-10 lg:text-13">{numKebutuhan}</p>
+    </div></div>
+  </div>
 </section>
 <script define:vars={{ numterkumpul }}>
   const element = document.getElementById("donut");
-element.style.setProperty("--value", numterkumpul);
+  element.style.setProperty("--value", numterkumpul);
 </script>
 <style>
-:root {
-  --size:0rem
-}
+  :root {
+    --size: 0rem;
+  }
 
- .radial-progress {
-  box-shadow: inset  0 0 10px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  position: relative;
-  display: inline-grid;
-  height: var(--size);
-  width: var(--size);
-  place-content: center;
-  border-radius: 9999px;
-  background-color: transparent;
-  vertical-align: middle;
-  box-sizing: content-box;
-  --value: 0;
-  --size: 14rem;
-  --thickness: calc(var(--size) / 10);
-}
-@keyframes text-sli{
-  to {
+  .radial-progress {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: inline-grid;
+    height: var(--size);
+    width: var(--size);
+    place-content: center;
+    border-radius: 9999px;
+    background-color: transparent;
+    vertical-align: middle;
+    box-sizing: content-box;
+    --value: 0;
+    --size: 14rem;
+    --thickness: calc(var(--size) / 10);
+  }
+  @keyframes text-sli {
+    to {
       background-position: 200% center;
     }
-}
-.text-gradient {
-  background: linear-gradient(to right, rgb(var(--accent)), #da62c4 30%, blue 60%);
-  background-size: 200% auto;
-  color: #000;
+  }
+  .text-gradient {
+    background: linear-gradient(
+      to right,
+      rgb(var(--accent)),
+      #da62c4 30%,
+      blue 60%
+    );
+    background-size: 200% auto;
+    color: #000;
 
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
     animation: text-sli 5s ease-in-out infinite;
+  }
 
-	}
+  .radial-progress::before,
+  .radial-progress::after {
+    position: absolute;
+    border-radius: 9999px;
+    content: "";
+  }
+  .radial-progress::after {
+    inset: calc(50% - var(--thickness) / 2);
+    transform: rotate(calc(var(--value) * 3.6deg - 90deg))
+      translate(calc(var(--size) / 2 - 50%));
+    background-color: blue;
+  }
 
-.radial-progress::before, .radial-progress::after {
-  position: absolute;
-  border-radius: 9999px;
-  content: "";
-}
-.radial-progress::after {
-  inset: calc(50% - var(--thickness)/2);
-  transform: rotate(calc(var(--value) * 3.6deg - 90deg)) translate(calc(var(--size)/2 - 50%));
-  background-color: blue;
-}
+  .radial-progress::before {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: radial-gradient(farthest-side, blue 98%, #0000)
+        top/var(--thickness) var(--thickness) no-repeat,
+      conic-gradient(blue calc(var(--value) * 1%), #0000 0);
+    -webkit-mask: radial-gradient(
+      farthest-side,
+      #0000 calc(99% - var(--thickness)),
+      #000 calc(100% - var(--thickness))
+    );
+    mask: radial-gradient(
+      farthest-side,
+      #0000 calc(99% - var(--thickness)),
+      #000 calc(100% - var(--thickness))
+    );
+  }
 
-.radial-progress::before {
+  .lgd {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(259px, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
+  .lrd {
+    list-style: none;
+    display: flex;
+    padding: 0.29rem;
+    background-color: white;
+    background-image: none;
+    background-size: 400%;
+    border-radius: 0.6rem;
 
-top: 0;
-right: 0;
-bottom: 0;
-left: 0;
-background: radial-gradient(farthest-side,blue 98%,#0000) top/var(--thickness) var(--thickness) no-repeat,conic-gradient(blue calc(var(--value) * 1%),#0000 0);
--webkit-mask: radial-gradient(farthest-side,#0000 calc(99% - var(--thickness)),#000 calc(100% - var(--thickness)));
-mask: radial-gradient(farthest-side,#0000 calc(99% - var(--thickness)),#000 calc(100% - var(--thickness)));
-
-}
-
-
-
-    .lgd {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(259px, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-    .lrd {
-		list-style: none;
-		display: flex;
-		padding: 0.29rem;
-		background-color: white;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 0.6rem;
-
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-	}
+    background-position: 100%;
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
 
   @media (min-width: 50em) {
     .radial-progress {
-  --size: 19rem;
-}
-
+      --size: 19rem;
+    }
   }
 </style>
