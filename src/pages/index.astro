@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Resuma from '../components/Ringkasan.astro';
+import Bank from '../components/bank.astro';
+import Support from '../components/Support.astro';
+
  const now = new Date();
  const options = { weekday: 'long' };
 const hariIni = now.toLocaleDateString('id-ID', options)+" "+now.toLocaleDateString();
@@ -11,7 +14,6 @@ console.log(hariIni)
 <Layout title="BerSaMa-Berbagi Selama Ramadan.">
 	
 	<main>
-		
 		<div class="mx-auto w-fit font-800 text-13 md:text-18 text-center">
 		<h1>1000 <span class="text-gradient">Paket</span></h1>
 		<h2 class="text-2xl font-800">Takjil Untuk <span class="text-gradient">Muslim</span></h2>
@@ -21,6 +23,8 @@ console.log(hariIni)
 			Laporan <a href="#" class="code">{hariIni}</a> .<br />
 		</h3></div>
 		<Resuma />
+		<Bank />
+		<Support />
 		<p class="text-2">By <a class="font-600 text-gradient" href="https://sarbeh.com">Ibrahim Nurul Huda</a></p>
 	</main>
 </Layout>
