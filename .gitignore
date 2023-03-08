@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# Secret from Google
+secret.json
+
 # generated types
 .astro/
 
@@ -19,3 +22,4 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+.vercel
