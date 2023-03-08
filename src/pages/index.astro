@@ -7,23 +7,23 @@ import Support from '../components/Support.astro';
  const now = new Date();
  const options = { weekday: 'long' };
 const hariIni = now.toLocaleDateString('id-ID', options)+" "+now.toLocaleDateString();
-console.log(hariIni)
+
 
 ---
 
 <Layout title="BerSaMa-Berbagi Selama Ramadan.">
 	
 	<main>
-		<div class="mx-auto w-fit font-800 text-13 md:text-18 text-center">
+		<div class="mx-auto  w-fit font-800 text-13 md:text-18 text-center">
 		<h1>1000 <span class="text-gradient">Paket</span></h1>
-		<h2 class="text-2xl font-800">Takjil Untuk <span class="text-gradient">Muslim</span></h2>
+		<h2 class="text-2xl font-800 ">Takjil Untuk <span class="text-gradient">Muslim</span></h2>
 		</div>
 		<div class="instructions">
 		<h3 class="mx-auto text-6 w-fit">
 			Laporan <a href="#" class="code">{hariIni}</a> .<br />
 		</h3></div>
 		<Resuma />
-		<h3 class="maafYak">Maaf masuk prod, kalau mau gabung ke <a href="https://github.com/herbras/Monitor" class="code" style="background: black;
+		<h3 class=" font-lobster maafYak">Maaf masuk prod, kalau mau gabung ke <a href="https://github.com/herbras/Monitor" class="code" style="background: black;
 			color: white;">Github</a> ya</h3>
 		<Bank />
 		<Support />
