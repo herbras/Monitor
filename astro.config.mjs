@@ -9,7 +9,6 @@ import transformerDirectives from '@unocss/transformer-directives';
 import presetWebFonts from '@unocss/preset-web-fonts';
 import vercel from "@astrojs/vercel/serverless";
 
-import purgecss from "astro-purgecss";
 
 // https://astro.build/config
 export default defineConfig({
@@ -34,7 +33,7 @@ export default defineConfig({
         }]
       }
     })]
-  }), react(), alpinejs(), purgecss()],
+  }), react(), alpinejs()],
   output: "server",
   adapter: vercel()
 });
