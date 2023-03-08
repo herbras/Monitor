@@ -8,4 +8,6 @@
 4. UNOcss
 5. Sedikit dari Alpine dan DaisyUI
 
+## Rencananya dibuat gini
+
 ![alt text](/Donasi/public/image0.png)
