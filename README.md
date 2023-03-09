@@ -9,12 +9,17 @@
 5. Sedikit dari Alpine dan DaisyUI
 
 ## Fitur MVP
+
 📝 Data otomatis update terus Muter sendiri
+
 📜 Tombol Copy disamping Norek
+
 ☎️ Form jadi template pesan Whatsapp
 
 ## Fitur Lebih
+
 🛜 Data Realtime update pakai SSE
+
 🏦 Explore Bank API
 
 
