@@ -1,8 +1,8 @@
 ---
 ---
 
-<section class="flex flex-col md:grid md:grid-rows-1 md:grid-cols-3 mt-6">
-  <div class="col-span-2">
+<section class="flex flex-col md:grid md:grid-rows-1 md:grid-cols-3 gap-4 mt-6">
+  <div class="lrd col-span-2 p-15">
     <div
       id="bank-numbers"
       x-data="{ bankNum: [
@@ -18,10 +18,10 @@
           class="flex flex-col"
     >
       <template x-for="bank in bankNum">
-        <div class="bank-number flex-inline gap-5">
-          <h4 x-text="bank.nama"></h4>
+        <div class="bank-number flex-inline gap-5 text-13 mt-5">
+          <h4 x-text="bank.nama" class="font-600" x-bind:class="bank.nama === 'BSI' ?  'text-amber' : 'text-lightBlue'"></h4>
           <div>
-            <p x-text="bank.norek"></p>
+            <p x-text="bank.norek" class="font-700"></p>
           </div>
         <div class="ehem">
 
@@ -33,10 +33,10 @@
         </div>
       </template>
     </div>
-    <h4>an. Yunus Abdul Kholiq</h4>
+    <h4 class="text-10 text-right mt-5 font-400">an. Yunus Abdul Kholiq</h4>
   </div>
-  <div class="flex-col">
-    <h2>Konfirmasi</h2>
+  <div class="flex-col lrd p-15">
+    <h2 class="font-600 text-9">Konfirmasi</h2>
     <div class="flex flex-col" x-data="{ nama: '', norek:'', option: 'option1' }">
         <input type="text" x-model="nama" placeholder="Masukkan Nama">
         <input id="nomor" inputmode="numeric" pattern="[0-9]*" placeholder="Masukkan Nomor Rekening anda" required title="Masukkan hanya angka">
@@ -70,7 +70,18 @@ inputNumber.addEventListener("keydown", (event) => {
   padding: 0.3em 0.45em;
   cursor:pointer
 }
+.lrd {
 
+    background-color: white;
+    background-image: none;
+    background-size: 400%;
+    border-radius: 0.6rem;
+
+    background-position: 100%;
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
 .tes {
   display: flex;
   align-items: center;
