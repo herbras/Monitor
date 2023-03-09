@@ -26,4 +26,4 @@
 
 ## Rencananya dibuat gini
 
-![alt text](/public/image0.wbp)
+![alt text](/public/image0.webp)
