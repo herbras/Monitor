@@ -17,9 +17,9 @@ const [kebutuhan, totalDonasi, kekurangan, terkumpul] = data;
 const mapped = data.map(([label, value]) => ({ label, value }));
 
 // Format nilai dalam mata uang Rupiah
-const numKebutuhan = IDRupiah.format(kebutuhan[1]);
-const numtotalDonasi = IDRupiah.format(totalDonasi[1]);
-const numkekurangan = IDRupiah.format(kekurangan[1]);
+const numKebutuhan = IDRupiah.format(kebutuhan[1]).replace(",00", "");;
+const numtotalDonasi = IDRupiah.format(totalDonasi[1]).replace(",00", "");;
+const numkekurangan = IDRupiah.format(kekurangan[1]).replace(",00", "");;
 const numterkumpul = (parseFloat(terkumpul[1]) * 100).toFixed(2);
 ---
 
@@ -36,14 +36,15 @@ const numterkumpul = (parseFloat(terkumpul[1]) * 100).toFixed(2);
     </div>
     <div class="lrd break-words text-center w-full px-5 flex-col">
       <div class="m-auto w-9/12">
-      <p class="text-7 md:text-12 lg:text-15 text-gradient font-bold"
-          >{numtotalDonasi}</p>
-      <p class="text-6 font-700 md:text-9 lg:text-12 ">
-         Alhamdulillah telah terkumpul dari 
-      </p>
-      <p
-          class="text-5 md:text-10 lg:text-13">{numKebutuhan}</p>
-    </div></div>
+        <p class="text-7 md:text-12 lg:text-15 text-gradient font-bold">
+          {numtotalDonasi}
+        </p>
+        <p class="text-6 font-700 md:text-9 lg:text-12">
+          Alhamdulillah telah terkumpul dari
+        </p>
+        <p class="text-5 md:text-10 lg:text-13">{numKebutuhan}</p>
+      </div>
+    </div>
   </div>
 </section>
 <script define:vars={{ numterkumpul }}>
