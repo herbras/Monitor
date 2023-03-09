@@ -2,7 +2,7 @@
 ---
 
 <section class="flex flex-col flex-wrap md:grid md:grid-rows-1 md:grid-cols-3 gap-4 mt-6">
-  <div class="lrd col-span-2 p-12 text-center md:p-15">
+  <div class="lrd col-span-2  text-center p-10 md:p-15">
     <div
       id="bank-numbers"
       x-data="{ bankNum: [
@@ -18,22 +18,22 @@
           class="flex flex-col "
     >
       <template x-for="bank in bankNum">
-        <div class="bank-number sm:flex-inline flex-wrap gap-5   break-words md:text-13  mt-5">
-          <h4 x-text="bank.nama" class="font-800 text-8" x-bind:class="bank.nama === 'BSI' ?  'text-amber' : 'text-lightBlue'"></h4>
+        <div class="bank-number sm:flex-inline flex-wrap gap-5   break-words md:text-13 ">
+          <h4 x-text="bank.nama" class="  font-800 text-12" x-bind:class="bank.nama === 'BSI' ?  'text-amber' : 'text-lightBlue'"></h4>
           <div>
-            <p x-text="bank.norek" class="font-700 text-12"></p>
+            <p x-text="bank.norek" class="font-700 text-8 sm:text-12"></p>
           </div>
         <div class="ehem">
 
           <a
-            class="code text-8"
+            class="code px-6 py-3 text-8 cursor-pointer"
             x-on:click="navigator.clipboard.writeText(bank.norek).then(() => { alert(`Norek ${bank.nama} berhasil disalin`) }).catch(() => { alert('Norek gagal disalin') })"
             >Copy</a
           ></div>
         </div>
       </template>
     </div>
-    <h4 class="text-5 md:text-right md:text-10 mt-5 font-400">an. Yunus Abdul Kholiq</h4>
+    <h4 class="text-8 md:text-right md:text-10 mt-5 font-700">an. Yunus Abdul Kholiq</h4>
   </div>
   <div class="flex-col lrd p-15">
     <h2 class="font-600 text-9">Konfirmasi</h2>
@@ -48,7 +48,7 @@
           <input type="radio" x-model="option" value="BRI">
          BRI
         </label> 
-        <a target="blank" class=" tes mx-auto" :href="`https://wa.me/62895344232330?text=Assalamualaikum, Saya **${nama}** telah mentransfer donasi melalui bank **${option}**. Berikut nomor rekening milik saya **${norek}**`"> KONFIRMASI </a>
+        <a target="blank" class=" tes mx-auto w-45 h-12" :href="`https://wa.me/62895344232330?text=Assalamualaikum, Saya **${nama}** telah mentransfer donasi melalui bank **${option}**. Berikut nomor rekening milik saya **${norek}**`"> KONFIRMASI </a>
       </div>
   </div>
 </section>
@@ -65,8 +65,6 @@ inputNumber.addEventListener("keydown", (event) => {
   background: rgba(var(--accent), 12%);
   color: rgb(var(--accent));
   border-radius: 4px;
-  padding: 0.3em 0.45em;
-  cursor:pointer
 }
 .lrd {
 
@@ -74,7 +72,7 @@ inputNumber.addEventListener("keydown", (event) => {
     background-image: none;
     background-size: 400%;
     border-radius: 0.6rem;
-
+    
     background-position: 100%;
     transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -89,10 +87,9 @@ inputNumber.addEventListener("keydown", (event) => {
   color: #ff0000;
   font-size: 18px;
   border-radius: 5px;
-  width: 200px;
-  height: 40px;
   border: 1px solid black;
   position: relative;
+ transform: translate(-4%, 4px);
   transition: 0.3s;
   overflow: hidden;
   background-color: #ffffff;
@@ -124,6 +121,32 @@ inputNumber.addEventListener("keydown", (event) => {
   font-size: 22px;
   z-index: 5;
 }
+@media (max-width: 768px) {
+  .lrd {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+  }
+  
+  .tes {
+    width: 100%;
+    margin-top: 1rem;
+    transform: none;
+  }
+  
+  .ehem {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .bank-number {
+    margin-bottom: 0.5rem;
+  }
+  
+  .text-5 {
+    text-align: center;
+  }
+}
+
 </style>
 
   
