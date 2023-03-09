@@ -39,7 +39,7 @@
     <h2>Konfirmasi</h2>
     <div class="flex flex-col" x-data="{ nama: '', norek:'', option: 'option1' }">
         <input type="text" x-model="nama" placeholder="Masukkan Nama">
-        <input id="nomor" x-model="norek" pattern="[0-9]*" placeholder="Masukkan Nomor Rekening anda" required title="Masukkan hanya angka">
+        <input id="nomor" inputmode="numeric" pattern="[0-9]*" placeholder="Masukkan Nomor Rekening anda" required title="Masukkan hanya angka">
     
         <label>
           <input type="radio" x-model="option" value="BSI">
@@ -56,10 +56,9 @@
 <script>
 const inputNumber = document.getElementById("nomor");
 inputNumber.addEventListener("keydown", (event) => {
-  if (!/^[0-9]*$/.test(event.key)) {
-    event.preventDefault();
-  }
+  event.target.value = event.target.value.replace(/[^0-9]/g, "");
 }); 
+
 </script>
 
 <style>.ehem .code{

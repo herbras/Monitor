@@ -1,21 +1,26 @@
 ---
-let IDRupiah = new Intl.NumberFormat("id-ID", {
+// Membuat objek formatter untuk mata uang Rupiah
+const IDRupiah = new Intl.NumberFormat("id-ID", {
   style: "currency",
   currency: "IDR",
 });
+
+// Mengambil data dari API
 const Insta = import.meta.env.SHEET_API;
 const response = await fetch(Insta);
 const data = await response.json();
+
+// Mendapatkan nilai dari data
 const [kebutuhan, totalDonasi, kekurangan, terkumpul] = data;
 
+// Mengonversi data ke dalam bentuk array objek
 const mapped = data.map(([label, value]) => ({ label, value }));
 
+// Format nilai dalam mata uang Rupiah
 const numKebutuhan = IDRupiah.format(kebutuhan[1]);
 const numtotalDonasi = IDRupiah.format(totalDonasi[1]);
 const numkekurangan = IDRupiah.format(kekurangan[1]);
 const numterkumpul = (parseFloat(terkumpul[1]) * 100).toFixed(2);
-const warna = "red";
-console.log(numterkumpul);
 ---
 
 <section id="Rangkuman" class="">
