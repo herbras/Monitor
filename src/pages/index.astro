@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Resuma from '../components/Ringkasan.astro';
 import Bank from '../components/bank.astro';
 import Support from '../components/Support.astro';
+import BelajarGrid from '../components/belajarGrid.astro';
 
 // Mendapatkan Waktu hari ini
 const now = new Date();
@@ -15,6 +16,7 @@ const hariIni = now.toLocaleDateString('id-ID', options)+" "+now.toLocaleDateStr
 <Layout title="BerSaMa-Berbagi Selama Ramadan.">
 	
 	<main>
+		
 		<div class="mx-auto  w-fit font-800 text-13 md:text-18 text-center">
 		<h1>1000 <span class="text-gradient">Paket</span></h1>
 		<h2 class="text-2xl font-800 ">Takjil Untuk <span class="text-gradient">Muslim</span></h2>
@@ -23,10 +25,7 @@ const hariIni = now.toLocaleDateString('id-ID', options)+" "+now.toLocaleDateStr
 		<h3 class="mx-auto text-6 w-fit text-center">
 			Laporan <a href="#" class="code">{hariIni}</a>
 		</h3></div>
-		<Resuma />
-		
-		<Bank />
-		<Support />
+		<BelajarGrid />
 		<p class="text-4 mt-4 text-center">By <a class="font-600 text-gradient" href="https://sarbeh.com">Ibrahim Nurul Huda</a></p>
 	</main>
 </Layout>
