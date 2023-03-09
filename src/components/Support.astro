@@ -1,42 +1,66 @@
 ---
-const Pendukung: { nama: string; logo: string }[] = [
+const Pendukung: { nama: string; logo: string ; alt: string; id:string}[] = [
   {
     nama: "AlQolam web",
-    logo: "src/public/01.webp",
+    logo: "/alqolam.webp",
+    alt : "logo Komunitas",
+    id: ""
   },
   {
     nama: "Insani",
-    logo: "src/public/07.webp",
+    logo: "/insani.webp",
+    alt : "logo Komunitas",
+    id: "insani"
   },
   {
     nama: "IAAM",
-    logo: "src/public/02.webp",
+    logo: "/alumni-minimal.webp",
+    alt : "logo Komunitas",
+    id: ""
   },
   {
     nama: "KHIDMAH",
-    logo: "src/public/03.webp",
+    logo: "/khidmah.png",
+    alt : "logo Komunitas",
+    id: "khidmah"
   }
 ];
-
-const supported = Object.keys(Pendukung);
-const dukungan = supported.map((key) => supported[key]);
 ---
 
 <section>
   <div  class="text-center">
-  <h2>Powered By</h2>
-  <div class=" mx-auto w-fit">
-    <div class="flex gap-6">
+  <h2 class="font-600">Powered By</h2>
+  <div class="w-4/5 mx-auto mt-6">
+    <div class="grid grid-cols-4  mx-auto">
       {
-        Pendukung.map(({ nama, logo }) => (
-          <div class="flex ">
-            <img src={logo} />
-            <h2>{nama}</h2>
-            
+        Pendukung.map(({ nama, logo, alt, id }) => (
+            <div class="flex-col">
+              <div class="w-4/6 md:w-3/6 lg:w-1/5 h-15 m-auto">
+          <div class="flex h-full items-center justify-center ">
+            <div class="container  w-6/12" id={id}>
+              <img  src={logo} alt="" loading="lazy" />
+            </div>
+          
           </div>
+        
+        </div>
+        <h2 >{nama}</h2>
+              
+              </div>
+          
+         
         ))
       }
     </div>
   </div>
 </div>
 </section>
+
+<style>
+  #khidmah{
+    width: 70%;
+  }
+  #insani{
+    width: 30%;
+  }
+</style>
