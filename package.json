@@ -20,6 +20,7 @@
     "@types/react-dom": "^18.0.11",
     "alpinejs": "^3.11.1",
     "astro": "^2.1.0",
+    "astro-rome": "^0.1.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "unocss-preset-daisy": "^2.0.0"

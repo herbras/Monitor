@@ -1,8 +1,10 @@
 ---
 ---
 
-<section class="flex flex-col flex-wrap md:grid md:grid-rows-1 md:grid-cols-3 gap-4 mt-6">
-  <div class="lrd col-span-2  text-center p-10 md:p-15 w-full">
+<section
+  class="flex flex-col flex-wrap md:grid md:grid-rows-1 md:grid-cols-3 gap-4 mt-6"
+>
+  <div class="lrd col-span-2 text-center p-10 md:p-15 w-full">
     <div
       id="bank-numbers"
       x-data="{ bankNum: [
@@ -15,138 +17,163 @@
               norek: 693901009058534
             }
           ] }"
-          class="flex flex-col "
+      class="flex flex-col"
     >
       <template x-for="bank in bankNum">
-        <div class="bank-number sm:flex-inline flex-wrap gap-5   break-words md:text-13 ">
-          <h4 x-text="bank.nama" class="  font-800 text-12" x-bind:class="bank.nama === 'BSI' ?  'text-amber' : 'text-lightBlue'"></h4>
+        <div
+          class="bank-number sm:flex-inline flex-wrap gap-5 break-words md:text-13"
+        >
+          <h4
+            x-text="bank.nama"
+            class="font-800 text-12"
+            x-bind:class="bank.nama === 'BSI' ?  'text-amber' : 'text-lightBlue'"
+          >
+          </h4>
           <div>
             <p x-text="bank.norek" class="font-700 text-8 sm:text-12"></p>
           </div>
-        <div class="ehem">
-
-          <a
-            class="code px-6 py-3 text-8 cursor-pointer"
-            x-on:click="navigator.clipboard.writeText(bank.norek).then(() => { alert(`Norek ${bank.nama} berhasil disalin`) }).catch(() => { alert('Norek gagal disalin') })"
-            >Copy</a
-          ></div>
+          <div class="ehem">
+            <a
+              class="code px-6 py-3 text-8 cursor-pointer"
+              x-on:click="navigator.clipboard.writeText(bank.norek).then(() => { alert(`Norek ${bank.nama} berhasil disalin`) }).catch(() => { alert('Norek gagal disalin') })"
+              >Copy</a>
+          </div>
         </div>
       </template>
     </div>
-    <h4 class="text-8 md:text-right md:text-10 mt-5 font-700">an. Yunus Abdul Kholiq</h4>
+    <h4 class="text-8 md:text-right md:text-10 mt-5 font-700">
+      an. Yunus Abdul Kholiq
+    </h4>
   </div>
   <div class="flex-col lrd p-15 w-full">
     <h2 class="font-600 text-9">Konfirmasi</h2>
-    <div class="flex flex-col gap-4 " x-data="{ nama: '', norek:'', option: 'option1' }">
-        <input type="text" class="border-2 px-1 h-8 rounded-md" x-model="nama" placeholder="Masukkan Nama">
-        <input id="nomor" class="border-2 px-1 h-8 rounded-md" inputmode="numeric" pattern="[0-9]*" placeholder="Masukkan Nomor Rekening anda" required title="Masukkan hanya angka">
-    
-        <label class="text-5 mx-auto">
-          <input type="radio" x-model="option" value="BSI">
-          BSI
-        
-          <input type="radio" x-model="option" value="BRI">
-         BRI
-        </label> 
-        <a target="blank" class=" tes mx-auto w-45 h-12" :href="`https://wa.me/62895344232330?text=Assalamualaikum, Saya **${nama}** telah mentransfer donasi melalui bank **${option}**. Berikut nomor rekening milik saya **${norek}**`"> KONFIRMASI </a>
-      </div>
+    <div
+      class="flex flex-col gap-4"
+      x-data="{ nama: '', norek:'', option: 'option1' }"
+    >
+      <input
+        type="text"
+        class="border-2 px-1 h-8 rounded-md"
+        x-model="nama"
+        placeholder="Masukkan Nama"
+      />
+      <input
+        id="nomor"
+        class="border-2 px-1 h-8 rounded-md"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        placeholder="Masukkan Nomor Rekening anda"
+        required
+        title="Masukkan hanya angka"
+      />
+
+      <label class="text-5 mx-auto">
+        <input type="radio" x-model="option" value="BSI" />
+        BSI
+
+        <input type="radio" x-model="option" value="BRI" />
+        BRI
+      </label>
+      <a
+        target="blank"
+        class="tes mx-auto w-45 h-12"
+        :href="`https://wa.me/62895344232330?text=Assalamualaikum, Saya **${nama}** telah mentransfer donasi melalui bank **${option}**. Berikut nomor rekening milik saya **${norek}**`"
+      >
+        KONFIRMASI
+      </a>
+    </div>
   </div>
 </section>
 
 <script>
-const inputNumber = document.getElementById("nomor");
-inputNumber.addEventListener("keydown", (event) => {
-  event.target.value = event.target.value.replace(/[^0-9]/g, "");
-}); 
-
+  const inputNumber = document.getElementById("nomor");
+  inputNumber.addEventListener("keydown", (event) => {
+    event.target.value = event.target.value.replace(/[^0-9]/g, "");
+  });
 </script>
 
-<style>.ehem .code{
-  background: rgba(var(--accent), 12%);
-  color: rgb(var(--accent));
-  border-radius: 4px;
-}
-.lrd {
-
+<style>
+  .ehem .code {
+    background: rgba(var(--accent), 12%);
+    color: rgb(var(--accent));
+    border-radius: 4px;
+  }
+  .lrd {
     background-color: white;
     background-image: none;
     background-size: 400%;
     border-radius: 0.6rem;
-    
+
     background-position: 100%;
     transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
       0 2px 4px -2px rgba(0, 0, 0, 0.1);
   }
-.tes {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  text-decoration: none;
-  color: #ff0000;
-  font-size: 18px;
-  border-radius: 5px;
-  border: 1px solid black;
-  position: relative;
- transform: translate(-4%, 4px);
-  transition: 0.3s;
-  overflow: hidden;
-  background-color: #ffffff;
-}
-
-.tes::before {
-  content: "🌟";
-  display: block;
-  font-size: 12px;
-  width: 60px;
-  text-align: center;
-  background-color:rgba(var(--accent), 82%);
-  padding: 7px 0 3px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-34%, -4px) rotate(-35deg);
-  transition: .3s;
-}
-
-.tes:hover {
-  color: #fff;
-  background-color:rgb(var(--accent));
-}
-
-.tes:hover::before {
-  content: "👌";
-  transform: translate(-14%,0) rotate(-35deg);
-  font-size: 22px;
-  z-index: 5;
-}
-@media (max-width: 768px) {
-  .lrd {
-    grid-column: 1 / -1;
-    margin-bottom: 1rem;
-  }
-  
   .tes {
-    margin-top: 1rem;
-    transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-decoration: none;
+    color: #ff0000;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid black;
+    position: relative;
+    transform: translate(-4%, 4px);
+    transition: 0.3s;
+    overflow: hidden;
+    background-color: #ffffff;
   }
-  
-  .ehem {
-    margin-top: 1rem;
-    text-align: center;
-  }
-  
-  .bank-number {
-    margin-bottom: 0.5rem;
-  }
-  
-  .text-5 {
-    text-align: center;
-  }
-}
 
+  .tes::before {
+    content: "🌟";
+    display: block;
+    font-size: 12px;
+    width: 60px;
+    text-align: center;
+    background-color: rgba(var(--accent), 82%);
+    padding: 7px 0 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-34%, -4px) rotate(-35deg);
+    transition: 0.3s;
+  }
+
+  .tes:hover {
+    color: #fff;
+    background-color: rgb(var(--accent));
+  }
+
+  .tes:hover::before {
+    content: "👌";
+    transform: translate(-14%, 0) rotate(-35deg);
+    font-size: 22px;
+    z-index: 5;
+  }
+  @media (max-width: 768px) {
+    .lrd {
+      grid-column: 1 / -1;
+      margin-bottom: 1rem;
+    }
+
+    .tes {
+      margin-top: 1rem;
+      transform: none;
+    }
+
+    .ehem {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .bank-number {
+      margin-bottom: 0.5rem;
+    }
+
+    .text-5 {
+      text-align: center;
+    }
+  }
 </style>
-
-  
-  

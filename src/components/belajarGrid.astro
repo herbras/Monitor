@@ -1,31 +1,29 @@
 ---
-
-
-const Pendukung: { nama: string; logo: string ; alt: string; id:string}[] = [
+const Pendukung: { nama: string; logo: string; alt: string; id: string }[] = [
   {
     nama: "AlQolam web",
     logo: "/alqolam.webp",
-    alt : "logo Komunitas",
-    id: ""
+    alt: "logo Komunitas",
+    id: "",
   },
   {
     nama: "Insani",
     logo: "/insani.webp",
-    alt : "logo Komunitas",
-    id: "insani"
+    alt: "logo Komunitas",
+    id: "insani",
   },
   {
     nama: "IAAM",
     logo: "/alumni-minimal.webp",
-    alt : "logo Komunitas",
-    id: ""
+    alt: "logo Komunitas",
+    id: "",
   },
   {
     nama: "KHIDMAH",
     logo: "/khidmah.png",
-    alt : "logo Komunitas",
-    id: "khidmah"
-  }
+    alt: "logo Komunitas",
+    id: "khidmah",
+  },
 ];
 // Mengonversi data ke dalam bentuk array objek
 
@@ -45,326 +43,324 @@ const [kebutuhan, totalDonasi, kekurangan, terkumpul] = data;
 const mapped = data.map(([label, value]) => ({ label, value }));
 
 // Format nilai dalam mata uang Rupiah
-const numKebutuhan = IDRupiah.format(kebutuhan[1]).replace(",00", "");;
-const numtotalDonasi = IDRupiah.format(totalDonasi[1]).replace(",00", "");;
-const numkekurangan = IDRupiah.format(kekurangan[1]).replace(",00", "");;
+const numKebutuhan = IDRupiah.format(kebutuhan[1]).replace(",00", "");
+const numtotalDonasi = IDRupiah.format(totalDonasi[1]).replace(",00", "");
+const numkekurangan = IDRupiah.format(kekurangan[1]).replace(",00", "");
 const numterkumpul = (parseFloat(terkumpul[1]) * 100).toFixed(2);
 ---
 
 <section>
-    <div class="grid grid-cols-1 md:grid-cols-4  gap-3">
-        <!--Baris Pertama 1x4 -->
-       <div class="md:col-span-2 md:row-span-1 " >
-        <div class="lrd h-xs md:h-xl shadow-dark">
-            <div
-              id="donut"
-              class="radial-progress m-auto border-4 text-8 md:text-10 font-700"
-              style="--value:70; --thickness: 2rem;"
-            >
-              {numterkumpul}%
-            </div>
-          </div>       </div>
-       
-       <div class="md:col-span-2 md:row-span-1">
-        <div class="lrd break-words text-center h-full px-5 flex-col">
-            <div class="m-auto w-9/12">
-              
-              <p class="text-6 font-700 md:text-9 lg:text-12">
-                Alhamdulillah telah terkumpul <p class="text-7 md:text-12 lg:text-15 text-gradient font-bold">
-                {numtotalDonasi}
-              </p> dari total kebutuhan 
-              <p class="text-5 md:text-10 lg:text-13">{numKebutuhan}</p>
-           
-              </p> </div>
+  <div class="grid grid-cols-1 md:grid-cols-4  gap-3">
+      <!--Baris Pertama 1x4 -->
+     <div class="md:col-span-2 md:row-span-1 " >
+      <div class="lrd h-xs md:h-xl shadow-dark">
+          <div
+            id="donut"
+            class="radial-progress m-auto border-4 text-8 md:text-10 font-700"
+            style="--value:70; --thickness: 2rem;"
+          >
+            {numterkumpul}%
           </div>
-       </div>
-       
-               <!--Baris Kedua  1x4 -->
-       <div class="md:col-span-4 lg:col-span-3 bg-light p-5 md:p-10 lg:md-15 md:row-span-1 min-h-sm text-center lg:text-left">
-        <div
-      id="bank-numbers"
-      x-data="{ bankNum: [
-            {
-              nama: 'BSI',
-              norek: 6142746020
-            },
-            {
-              nama: 'BRI',
-              norek: 693901009058534
-            }
-          ] }"
-          class="  "
-    >
-      <template x-for="bank in bankNum">
-        <div class="bank-number max-h-60  items-center justify-items-center grid grid-rows-3 md:flex-inline md:gap-5  break-words md:text-9 ">
-          <h4 x-text="bank.nama" class="  font-800 text-12" x-bind:class="bank.nama === 'BSI' ?  'text-amber' : 'text-lightBlue'"></h4>
-          <div class="content-center">
-            <p x-text="bank.norek" class=" font-700 text-7 mx-auto self-center  sm:text-8 lg:text-12"></p>
-          </div>
-        <div class="ehem mb-5">
+        </div>       </div>
 
-          <a
-            class="code  px-6 py-3 text-8 cursor-pointer "
-            x-on:click="navigator.clipboard.writeText(bank.norek).then(() => { alert(`Norek ${bank.nama} berhasil disalin`) }).catch(() => { alert('Norek gagal disalin') })"
-            >Copy</a
-          ></div>
+     <div class="md:col-span-2 md:row-span-1">
+      <div class="lrd break-words text-center h-full px-5 flex-col">
+          <div class="m-auto w-9/12">
+            <p class="text-6 font-700 md:text-9 lg:text-12 ">
+              Alhamdulillah telah terkumpul
+            </p>
+            <p class="text-7 md:text-12 lg:text-15 text-gradient font-bold">
+              {numtotalDonasi}
+            </p>
+            <p class="text-5 md:text-10 lg:text-13">dari total kebutuhan <span class="font-600">{numKebutuhan}</span></p>
+          </div>
         </div>
-      </template>
-    </div>
-    <h4 class="text-8 md:text-right md:text-10 mt-5 font-700">an. Yunus Abdul Kholiq</h4>
-       </div>
-       <div class="md:col-span-2 lg:col-span-1 md:row-span-1 lrd flex-col text-center">
-        <div class="m-auto w-1/2">
-        <h2 class="font-600 text-9">Konfirmasi</h2>
-        <div class="flex flex-col gap-4 " x-data="{ nama: '', norek:'', option: 'option1' }">
-            <input type="text" x-model="nama" placeholder="Masukkan Nama"  class="block w-full flex-1 rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+     </div>
 
-            <input id="nomor" type="text" name="Nomor Rekening" x-model="norek" inputmode="numeric" pattern="[0-9]*" placeholder="Masukkan Nomor Rekening anda" required title="Masukkan hanya angka" class="block w-full flex-1 rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-            <label class="text-5 mx-auto">
-              <input type="radio" x-model="option" value="BSI">
-              BSI
-            
-              <input type="radio" x-model="option" value="BRI">
-             BRI
-            </label> 
-            <a target="blank" class=" tes mx-auto w-45 h-12" :href="`https://wa.me/62895344232330?text=Assalamualaikum, Saya **${nama}** telah mentransfer donasi melalui bank **${option}**. Berikut nomor rekening milik saya **${norek}**`"> KONFIRMASI </a>
-          </div></div>
-       </div>
-       
-               <!--Baris Ketiga 2x4 -->
-       <div class="md:col-span-4 md:row-span-1 ">
-        <div  class="text-center">
-            <h2 class="font-600">Powered By</h2>
-            <div class="w-4/5 mx-auto mt-6">
-              <div class="grid grid-cols-4  mx-auto max-w-lg	">
-                {
-                  Pendukung.map(({ nama, logo, alt, id }) => (
-                      <div class="flex-col">
-                        <div class="w-4/6 md:w-3/6  h-15 m-auto">
-                    <div class="flex h-full items-center justify-center ">
-                      <div class="mb-12  w-6/12" id={id}>
-                        <img  src={logo} alt="" loading="lazy" />
-                      </div>
-                    
+             <!--Baris Kedua  1x4 -->
+     <div class="md:col-span-4 lg:col-span-3 bg-light p-5 md:p-10 lg:md-15 md:row-span-1 min-h-sm text-center lg:text-left">
+      <div
+    id="bank-numbers"
+    x-data="{ bankNum: [
+          {
+            nama: 'BSI',
+            norek: 6142746020
+          },
+          {
+            nama: 'BRI',
+            norek: 693901009058534
+          }
+        ] }"
+        class="  "
+  >
+    <template x-for="bank in bankNum">
+      <div class="bank-number max-h-60  items-center justify-items-center grid grid-rows-3 md:flex-inline md:gap-5  break-words md:text-9 ">
+        <h4 x-text="bank.nama" class="  font-800 text-12" x-bind:class="bank.nama === 'BSI' ?  'text-amber' : 'text-lightBlue'"></h4>
+        <div class="content-center">
+          <p x-text="bank.norek" class=" font-700 text-7 mx-auto self-center  sm:text-8 lg:text-12"></p>
+        </div>
+      <div class="ehem mb-5">
+
+        <a
+          class="code  px-6 py-3 text-8 cursor-pointer "
+          x-on:click="navigator.clipboard.writeText(bank.norek).then(() => { alert(`Norek ${bank.nama} berhasil disalin`) }).catch(() => { alert('Norek gagal disalin') })"
+          >Copy</a
+        ></div>
+      </div>
+    </template>
+  </div>
+  <h4 class="text-8 md:text-right md:text-10 mt-5 font-700">an. Yunus Abdul Kholiq</h4>
+     </div>
+     <div class="md:col-span-4 lg:col-span-1 md:row-span-1 lrd flex-col text-center">
+      <div class="m-auto w-1/2">
+      <h2 class="font-600 text-9">Konfirmasi</h2>
+      <div class="flex flex-col gap-4 " x-data="{ nama: '', norek:'', option: 'option1' }">
+          <input type="text" x-model="nama" placeholder="Masukkan Nama"  class="block w-full flex-1 rounded-md border-0 px-6 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+          <input id="nomor" type="text" name="Nomor Rekening" x-model="norek" inputmode="numeric" pattern="[0-9]*" placeholder="Masukkan Nomor Rekening anda" required title="Masukkan hanya angka" class="block w-full flex-1 rounded-md border-0 py-1.5 text-gray-900  px-3 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          <label class="text-5 mx-auto">
+            <input type="radio" x-model="option" value="BSI">
+            BSI
+
+            <input type="radio" x-model="option" value="BRI">
+           BRI
+          </label> 
+          <a target="blank" class=" tes mx-auto w-45 h-12" :href="`https://wa.me/62895344232330?text=Assalamualaikum, Saya **${nama}** telah mentransfer donasi melalui bank **${option}**. Berikut nomor rekening milik saya **${norek}**`"> KONFIRMASI </a>
+        </div></div>
+     </div>
+
+             <!--Baris Ketiga 2x4 -->
+     <div class="md:col-span-4 md:row-span-1 ">
+      <div  class="text-center">
+          <h2 class="font-600">Powered By</h2>
+          <div class="w-4/5 mx-auto mt-6">
+            <div class="grid grid-cols-4  mx-auto max-w-lg	">
+              {
+                Pendukung.map(({ nama, logo, alt, id }) => (
+                    <div class="flex-col">
+                      <div class="w-4/6 md:w-3/6  h-15 m-auto">
+                  <div class="flex h-full items-center justify-center ">
+                    <div class="mb-12  w-6/12" id={id}>
+                      <img  src={logo} alt="" loading="lazy" />
                     </div>
                   
                   </div>
-                  <p class="text-3">{nama}</p>
-                        
-                        </div>
-                    
-                   
-                  ))
-                }
-              </div>
+                
+                </div>
+                <p class="text-3">{nama}</p>
+                      
+                      </div>
+                  
+                 
+                ))
+              }
             </div>
           </div>
         </div>
-      
+      </div>
 
-       <!--Baris Ketiga 1x4 -->
-       
-    </div>
+
+     <!--Baris Ketiga 1x4 -->
+
+  </div>
 </section>
 <script define:vars={{ numterkumpul }}>
-    const element = document.getElementById("donut");
-        element.style.setProperty("--value", numterkumpul);
-    const inputNumber = document.getElementById("nomor");
-    inputNumber.addEventListener("keydown", (event) => {
-      event.target.value = event.target.value.replace(/[^0-9]/g, "");
-    }); 
-    
-    </script>
-    
+  const element = document.getElementById("donut");
+  element.style.setProperty("--value", numterkumpul);
+  const inputNumber = document.getElementById("nomor");
+  inputNumber.addEventListener("keydown", (event) => {
+    event.target.value = event.target.value.replace(/[^0-9]/g, "");
+  });
+</script>
+
 <style>
-    :root {
-      --size: 0rem;
+  :root {
+    --size: 0rem;
+  }
+
+  .radial-progress {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: inline-grid;
+    height: var(--size);
+    width: var(--size);
+    place-content: center;
+    border-radius: 9999px;
+    background-color: transparent;
+    vertical-align: middle;
+    box-sizing: content-box;
+    --value: 0;
+    --size: 14rem;
+    --thickness: calc(var(--size) / 10);
+  }
+  @keyframes text-sli {
+    to {
+      background-position: 200% center;
     }
-  
-    .radial-progress {
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1),
-        0 2px 4px -2px rgba(0, 0, 0, 0.1);
-      position: relative;
-      display: inline-grid;
-      height: var(--size);
-      width: var(--size);
-      place-content: center;
-      border-radius: 9999px;
-      background-color: transparent;
-      vertical-align: middle;
-      box-sizing: content-box;
-      --value: 0;
-      --size: 14rem;
-      --thickness: calc(var(--size) / 10);
-    }
-    @keyframes text-sli {
-      to {
-        background-position: 200% center;
-      }
-    }
-    .text-gradient {
-      background: linear-gradient(
-        to right,
-        rgb(var(--accent)),
-        #da62c4 30%,
-        blue 60%
-      );
-      background-size: 200% auto;
-      color: #000;
-  
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-size: 400%;
-      background-position: 0%;
-      animation: text-sli 5s ease-in-out infinite;
-    }
-  
-    .radial-progress::before,
-    .radial-progress::after {
-      position: absolute;
-      border-radius: 9999px;
-      content: "";
-    }
-    .radial-progress::after {
-      inset: calc(50% - var(--thickness) / 2);
-      transform: rotate(calc(var(--value) * 3.6deg - 90deg))
-        translate(calc(var(--size) / 2 - 50%));
-      background-color: blue;
-    }
-    #khidmah{
+  }
+  .text-gradient {
+    background: linear-gradient(
+      to right,
+      rgb(var(--accent)),
+      #da62c4 30%,
+      blue 60%
+    );
+    background-size: 200% auto;
+    color: #000;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+    animation: text-sli 5s ease-in-out infinite;
+  }
+
+  .radial-progress::before,
+  .radial-progress::after {
+    position: absolute;
+    border-radius: 9999px;
+    content: "";
+  }
+  .radial-progress::after {
+    inset: calc(50% - var(--thickness) / 2);
+    transform: rotate(calc(var(--value) * 3.6deg - 90deg))
+      translate(calc(var(--size) / 2 - 50%));
+    background-color: blue;
+  }
+  #khidmah {
     width: 70%;
   }
-  .ehem .code{
-  background: rgba(var(--accent), 12%);
-  color: rgb(var(--accent));
-  border-radius: 4px;
-}
-.lrd , .bg-light {
-
+  .ehem .code {
+    background: rgba(var(--accent), 12%);
+    color: rgb(var(--accent));
+    border-radius: 4px;
+  }
+  .lrd,
+  .bg-light {
     background-color: white;
     background-image: none;
     background-size: 400%;
     border-radius: 0.6rem;
-    
+
     background-position: 100%;
     transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
       0 2px 4px -2px rgba(0, 0, 0, 0.1);
   }
-.tes {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  text-decoration: none;
-  color: #ff0000;
-  font-size: 18px;
-  border-radius: 5px;
-  border: 1px solid black;
-  position: relative;
- transform: translate(-4%, 4px);
-  transition: 0.3s;
-  overflow: hidden;
-  background-color: #ffffff;
-}
-
-.tes::before {
-  content: "🌟";
-  display: block;
-  font-size: 12px;
-  width: 60px;
-  text-align: center;
-  background-color:rgba(var(--accent), 82%);
-  padding: 7px 0 3px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-34%, -4px) rotate(-35deg);
-  transition: .3s;
-}
-
-.tes:hover {
-  color: #fff;
-  background-color:rgb(var(--accent));
-}
-
-.tes:hover::before {
-  content: "👌";
-  transform: translate(-14%,0) rotate(-35deg);
-  font-size: 22px;
-  z-index: 5;
-}
-@media (max-width: 768px) {
-  .lrd {
-    grid-column: 1 / -1;
-    margin-bottom: 1rem;
-  }
-  
   .tes {
-    margin-top: 1rem;
-    transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-decoration: none;
+    color: #ff0000;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid black;
+    position: relative;
+    transform: translate(-4%, 4px);
+    transition: 0.3s;
+    overflow: hidden;
+    background-color: #ffffff;
   }
-  
-  .ehem {
- 
+
+  .tes::before {
+    content: "🌟";
+    display: block;
+    font-size: 12px;
+    width: 60px;
     text-align: center;
+    background-color: rgba(var(--accent), 82%);
+    padding: 7px 0 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-34%, -4px) rotate(-35deg);
+    transition: 0.3s;
   }
-  
-  .bank-number {
-    margin-bottom: 0.5rem;
+
+  .tes:hover {
+    color: #fff;
+    background-color: rgb(var(--accent));
   }
-  
-  .text-5 {
-    text-align: center;
+
+  .tes:hover::before {
+    content: "👌";
+    transform: translate(-14%, 0) rotate(-35deg);
+    font-size: 22px;
+    z-index: 5;
   }
-}
-  #insani{
+  @media (max-width: 768px) {
+    .lrd {
+      grid-column: 1 / -1;
+      margin-bottom: 1rem;
+    }
+
+    .tes {
+      margin-top: 1rem;
+      transform: none;
+    }
+
+    .ehem {
+      text-align: center;
+    }
+
+    .bank-number {
+      margin-bottom: 0.5rem;
+    }
+
+    .text-5 {
+      text-align: center;
+    }
+  }
+  #insani {
     width: 30%;
   }
-    .radial-progress::before {
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: radial-gradient(farthest-side, blue 98%, #0000)
-          top/var(--thickness) var(--thickness) no-repeat,
-        conic-gradient(blue calc(var(--value) * 1%), #0000 0);
-      -webkit-mask: radial-gradient(
-        farthest-side,
-        #0000 calc(99% - var(--thickness)),
-        #000 calc(100% - var(--thickness))
-      );
-      mask: radial-gradient(
-        farthest-side,
-        #0000 calc(99% - var(--thickness)),
-        #000 calc(100% - var(--thickness))
-      );
+  .radial-progress::before {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: radial-gradient(farthest-side, blue 98%, #0000)
+        top/var(--thickness) var(--thickness) no-repeat,
+      conic-gradient(blue calc(var(--value) * 1%), #0000 0);
+    -webkit-mask: radial-gradient(
+      farthest-side,
+      #0000 calc(99% - var(--thickness)),
+      #000 calc(100% - var(--thickness))
+    );
+    mask: radial-gradient(
+      farthest-side,
+      #0000 calc(99% - var(--thickness)),
+      #000 calc(100% - var(--thickness))
+    );
+  }
+
+  .lgd {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(259px, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
+  .lrd {
+    list-style: none;
+    display: flex;
+    padding: 0.29rem;
+    background-color: white;
+    background-image: none;
+    background-size: 400%;
+    border-radius: 0.6rem;
+
+    background-position: 100%;
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: 50em) {
+    .radial-progress {
+      --size: 19rem;
     }
-  
-    .lgd {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(259px, 1fr));
-      gap: 1rem;
-      padding: 0;
-    }
-    .lrd {
-      list-style: none;
-      display: flex;
-      padding: 0.29rem;
-      background-color: white;
-      background-image: none;
-      background-size: 400%;
-      border-radius: 0.6rem;
-  
-      background-position: 100%;
-      transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -2px rgba(0, 0, 0, 0.1);
-    }
-  
-    @media (min-width: 50em) {
-      .radial-progress {
-        --size: 19rem;
-      }
-    }
-  </style>
+  }
+</style>

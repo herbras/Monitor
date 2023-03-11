@@ -9,6 +9,7 @@ import transformerDirectives from '@unocss/transformer-directives';
 import presetWebFonts from '@unocss/preset-web-fonts';
 import vercel from "@astrojs/vercel/serverless";
 
+import rome from "astro-rome";
 
 // https://astro.build/config
 export default defineConfig({
@@ -33,7 +34,7 @@ export default defineConfig({
         }]
       }
     })]
-  }), react(), alpinejs()],
+  }), react(), alpinejs(), rome()],
   output: "server",
   adapter: vercel()
 });
